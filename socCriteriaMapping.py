@@ -124,6 +124,7 @@ def find_implemented_ETs(framework):
     return sorted(ET_set) # Returns a list of the ETs included in our frameworks
 
 
+# Prints to the console the framework controls satisfied by each SOC criteria
 def compare_criteria_framework_ets(soc_criteria_dict, framework):
     print(framework['label'])
 
@@ -141,6 +142,7 @@ def compare_criteria_framework_ets(soc_criteria_dict, framework):
         print('\n')
 
 
+# creates a csv detailing the controls satisfied by each SOC criteria
 def create_csv_mapping(soc_criteria_dict, framework):
     f_name = framework["label"]
     with open("SOC 2 _" +f_name + "mapping.csv", "w") as csvfile:
@@ -161,11 +163,14 @@ def create_csv_mapping(soc_criteria_dict, framework):
 
                     writer.writerow([c, list_to_text(criteria_controls), list_to_text(f_controls)])
 
+
+# Helps to format a list as a string
 def list_to_text(list):
     text = ""
     for control in list:
         text = text + control + "\n"
     return text
+
 
 def main():
         framework_dicts = create_dict_of_frameworks('controls_export.csv')
